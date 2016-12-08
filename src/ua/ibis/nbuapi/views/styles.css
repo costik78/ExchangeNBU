@@ -1,0 +1,20 @@
+.table-cell {
+    -fx-alignment: CENTER-LEFT;
+}
+
+.table-cell-center {
+    -fx-alignment: CENTER;
+}
+
+.table-cell-left {
+    -fx-alignment: CENTER-LEFT;
+}
+
+.table-cell-right {
+    -fx-alignment: CENTER-RIGHT;
+}
+
+/* horizontal the two nodes are placed to the left/right of each other. */
+/*.split-pane *.split-pane-divider {
+    -fx-padding: 0 5 0 1;
+}*/

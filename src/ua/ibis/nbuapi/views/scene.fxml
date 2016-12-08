@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import ua.ibis.nbuapi.views.DateCellFactory?>
+<?import ua.ibis.nbuapi.views.IndexingCellValueFactory?>
+<?import ua.ibis.nbuapi.views.RateCellValueFactory?>
+
+<BorderPane prefHeight="400.0" prefWidth="600.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ua.ibis.nbuapi.controller.Controller">
+   <center>
+      <StackPane fx:id="layoutPane" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+         </BorderPane.margin>
+         <children>
+            <ProgressIndicator fx:id="progressIndicator" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="50.0" />
+            <TableView fx:id="exchTable">
+              <columns>
+                <TableColumn editable="false" prefWidth="75.0" styleClass="table-cell-right" text="#">
+                    <cellValueFactory>
+                        <IndexingCellValueFactory />
+                     </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="75.0" styleClass="table-cell-center" text="R030">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="r030" />
+                     </cellValueFactory>
+                </TableColumn>
+                  <TableColumn prefWidth="75.0" text="Наименование валюты">
+                      <cellValueFactory>
+                        <PropertyValueFactory property="nameOfCurrency" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn prefWidth="75.0" styleClass="table-cell-right" text="Курс">
+                      <cellValueFactory>
+                        <PropertyValueFactory property="rate" />
+                     </cellValueFactory>
+                      <cellFactory>
+                          <RateCellValueFactory />
+                      </cellFactory>
+                  </TableColumn>
+                  <TableColumn prefWidth="75.0" styleClass="table-cell-center" text="Обозначение валюты">
+                      <cellValueFactory>
+                        <PropertyValueFactory property="imgOfCurrency" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn prefWidth="75.0" styleClass="table-cell-center" text="Дата">
+                      <cellValueFactory>
+                        <PropertyValueFactory property="date" />
+                     </cellValueFactory>
+                      <cellFactory>
+                          <DateCellFactory />
+                     </cellFactory>
+                  </TableColumn>
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+         </children>
+      </StackPane>
+   </center>
+   <top>
+      <MenuBar fx:id="menuBar" BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="Выход">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#closeApp" text="Close" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="XML">
+              <items>
+              <MenuItem mnemonicParsing="false" onAction="#openXML" text="Открыть" />
+                <MenuItem mnemonicParsing="false" onAction="#saveXML" text="Сохранить" />
+                <MenuItem mnemonicParsing="false" onAction="#openURLXml" text="Запросить текущий курс" />
+                <MenuItem mnemonicParsing="false" onAction="#openURLXmlDate" text="Запросить курс на дату" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="JSON">
+              <items>
+              <MenuItem mnemonicParsing="false" onAction="#openJSON" text="Открыть" />
+                  <MenuItem mnemonicParsing="false" onAction="#saveJSON" text="Сохранить" />
+                  <MenuItem mnemonicParsing="false" onAction="#openURLJson" text="Запросить текущий курс" />
+                  <MenuItem mnemonicParsing="false" onAction="#openURLJsonDate" text="Запросить курс на дату" />
+              </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+</BorderPane>
